@@ -27,11 +27,35 @@ function actOnClick() {
 
 
 /***  Eingabe | Check auf Datenintegrität */  
-//4. Modul: Eingabe
+// 4. Definition: Eingabefeld
+const field = document.getElementsByName("eingabe")[0];
+
+
+//4.a Modul: Eingabe
 function getInput() {
-    const field = document.getElementsByName("eingabe")[0];
     return parseInt(field.value);
 }
+
+// 4.b Trigger - Input
+field.addEventListener("input",isInputValid);
+
+// 4.c Check auf korrekte Eingaben...
+function isInputValid() {
+
+    let inputStr = field.value;
+    const patt = /^[0-9]{1,3}$/g;
+    let cond = patt.test(inputStr);
+
+    if (!cond) {
+       field.value = "";
+       updateImg(data.default.bev); 
+    }
+    return true;
+}
+
+
+
+
 
 
 /***  Business-Logic */ 
