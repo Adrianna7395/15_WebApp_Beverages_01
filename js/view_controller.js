@@ -22,7 +22,11 @@ btn.addEventListener("click",actOnClick);
 
 // 5b. Event-Dispatcher
 function actOnClick() {
-    controller();
+    if (isInputValid()) {
+        controller();
+    } else {
+        output("Input nicht korrekt")
+    }
 }
 
 
@@ -50,7 +54,7 @@ function isInputValid() {
        field.value = "";
        updateImg(data.default.bev); 
     }
-    return true;
+    return cond;
 }
 
 
